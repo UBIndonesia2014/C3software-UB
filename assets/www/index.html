@@ -1,0 +1,978 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title><h2>C3+ iGem Brawijaya<h2></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="mobile portfolio, mobile portfolio site">
+        <meta name="author" content="aisyah ami">
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
+        <script src="js/jquery-1.8.3.min.js"></script>
+        <script src="js/jquery.mobile-1.2.0.min.js"></script>
+        <link href="css/jquery.mobile.structure-1.2.0.min.css" rel="stylesheet">
+        <link href="css/jquery.mobile.theme-1.2.0.min.css" rel="stylesheet">
+        <link href="css/jquery.mobile-1.2.0.min.css" rel="stylesheet">
+        <link href="css/photoswipe.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/script.js"></script>
+        <script src="js/settings.js"></script>
+        <script src="js/klass.min.js"></script>
+        <script src="js/code.photoswipe.jquery-3.0.5.min.js"></script>
+		
+		
+		
+    <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
+
+    // Wait for PhoneGap to connect with the device
+    //
+    document.addEventListener("deviceready",onDeviceReady,false);
+
+    // PhoneGap is ready to be used!
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+    
+	// Called when a photo is successfully retrieved
+    //
+    function onPhotoFileSuccess(imageData) {
+      // Get image handle
+      console.log(JSON.stringify(imageData));
+      
+   	  // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI 
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
+    }
+
+    // A button will call this function
+    //
+    function capturePhotoWithData() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
+    }
+
+    function capturePhotoWithFile() {
+        navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+    }
+    
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Called if something bad happens.
+    // 
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
+
+    </script>
+ 
+		
+		
+		
+		
+    </head>
+
+    <body>
+
+  <!-- homepage -->
+        <div data-role="page" id="home">
+            <div data-role="header">
+                <h3>C3+ iGem Brawijaya</h3>
+            </div>
+            <div data-role="content">
+
+                    <div class="pt-menu">
+                        <a data-theme="d" data-corners="false" data-role="button" href="#preventing">
+                            <img src="images/icons/round/64x64/preve.png" alt="rss" style="display: block; margin: 0 auto">
+                            <p>Preventing</p>
+                        </a>
+
+                        <a data-theme="d" data-corners="false" data-role="button" href="#screening">
+                            <img src="images/icons/round/64x64/sce.png" alt="rss" style="display: block; margin: 0 auto">
+                            <p>Screening</p>
+                        </a>
+
+                        <a data-theme="d" data-corners="false" data-role="button" href="#therapy">
+                            <img src="images/icons/round/64x64/netvibes.png" alt="mail" style="display: block; margin: 0 auto">
+                            <p>Therapy</p>
+                        </a>
+
+                        <a data-theme="d" data-corners="false" data-role="button" href="#test">
+                            <img src="images/icons/round/64x64/test.png" alt="mail" style="display: block; margin: 0 auto">
+                            <p>Test Cancer</p>
+                        </a>
+						
+						<a data-theme="d" data-corners="false" data-role="button" href="#help">
+                            <img src="images/icons/round/64x64/hel.png" alt="rss" style="display: block; margin: 0 auto">
+                            <p>Help</p>
+                        </a>
+						
+						<a data-theme="d" data-corners="false" data-role="button" href="#about">
+                            <img src="images/icons/round/64x64/us.png" alt="rss" style="display: block; margin: 0 auto">
+                            <p>About</p>
+                        </a>
+
+                    </div>
+
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+
+        <!-- Preventing  -->
+        <div data-role="page" id="preventing" data-title="preventing">
+            <div data-role="header">
+                <h1>Preventing</h1>
+                <a data-role="button" href="#home" data-icon="home" data-corners="false">Home</a>
+            </div>
+            <div data-role="content">
+
+                <!-- profile image -->
+                <h3><p>Preventing of the cervical cancer can be done with several tests or avoiding some conditions that we review from some journals. Basically, we divided it into two main points with each sub-topics in it. </p><h2>
+
+                <!-- my profile -->
+                <div data-role="collapsible-set">
+
+                    <div data-role="collapsible" data-corners="false" class="ui-corner-none" data-collapsed="false">
+                        <h2 class="ui-collapsible-heading"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                            <span class="ui-btn-text">What is Cervical Cancer?</span>
+                        </a></h2>
+                        <div class="ui-body ui-body-d ui-textalign-left">
+
+                            <img src="images/staging/cc.jpg" alt="intro" />
+
+                           
+                        </div>
+                    </div>
+
+                    <!-- Staging -->
+                    <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                        <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                            <span class="ui-btn-text">Staging</span>
+                        </a></h2>
+                        <div class="ui-body ui-body-d ui-textalign-left">
+
+                            <div data-role="collapsible-set">
+							<h4>As we all know that cervical cancer has some staging characteristics that can explain how danger the cancer has spread in the body. Here we review from a journal from Benedet (2000) what kinds of stages in cervical cancer based on clinical evaluation.<h4>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Stage 0</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/staging/Staging 1.jpg" alt="preventing" />
+									<br>This stage involve the thickness of the epithelium with atypical cell but there is no signs of invasion into the stroma.
+                                        </div>
+                                </div>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Stage 1</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+                                        There are two types of this stage I, stage IA and IB. Then stage IA is divided into two, stage IA1 and IA2 with little bit of differences on stromal invasion. The diagnostic for stage IA can be known only by microscopy examination where the invasion should not be >5 mm taken from the base of epithelium, either surface or glandular. The diagnose for stage IA1 is when the invasion no greater than 3.0 mm in depth and 7.0 mm or less in horizontal spread.  Meanwhile for the stage IA2, the stromal invasion more than 3.0 mm in depth and not more than 5.0 mm with a horizontal spread 7.0 mm or less.
+										<br>
+										<br>Stage IB divided into two just like stage IA, stage IB1 and IB2. The diagnostic point for stage IB is they has larger lesions than stage IA. For stage IB1, the lesion is clinically visible 4 cm and the stage IB2 is more than 4 cm in greatest dimension.
+										<br><img src="images/staging/Staging1b.jpg" alt="preventing" />
+										</div>
+                                </div>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Stage 2</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-center">
+									<img src="images/staging/Staging 2A.jpg" alt="preventing" />
+									<img src="images/staging/Staging 2B.jpg" alt="preventing" />
+                                     <br>A patient with tumour invading beyond the uterus but not to pelvic wall should be classified to stage II. This stage is divide into two, stage IIA and stage IIB with the differences in parametrial invasion. In stage IIA the characteristics of tumour invading without parametrial invasion and in stage IIB without parametrial invasion.
+										</div>
+                                </div>
+								
+								<div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Stage 3</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-center">
+									<img src="images/staging/Staging 3A.jpg" alt="preventing" />
+									<img src="images/staging/Staging 3B.jpg" alt="preventing" />
+                                     <br>The presence of non functioning kidney in patient is the diagnostic for stage III and divided into two, stage IIIA and stage IIIB. Tumour in stage IIIA involves lower third of vagina no extension to pelvic wall. Meanwhile in stage IIIB, the tumour extends to pelvic wall and/or causes non functioning kidney.
+									 </div>
+                                </div>
+								
+								<div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Stage 4</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-center">
+									<img src="images/staging/Staging 4A.jpg" alt="preventing" />
+									<img src="images/staging/Staging 4B.jpg" alt="preventing" />
+                                     <br>
+									 The presence of bullous edema is a sign for stage IV. Stage IVA is diagnostic when the tumour invades mucosa of bladder or rectum and/or extends beyond true pelvis. And the last stage is stage IVB when there is distant metastasis in the patient.
+									 </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Causes -->
+                    <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                        <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                            <span class="ui-btn-text">Causes</span>
+                        </a></h2>
+                        <div class="ui-body ui-body-d ui-textalign-left ui-corner-none" data-corners="false">
+
+                            <div data-role="collapsible-set" class="ui-corner-none" data-corners="false">
+								<h4>Many factors in our enviroment life can affect our health especially our reproductive’s organ. From an American Cancer Society’s article, we review some risk factors that can cause the development of cervical cancer.<h4>
+                                   
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+									 <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">HPV Infection</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/causes/hpv.jpg" alt="preventing" />
+									<br>
+                                        Human Pappiloma Virus is the most important and common risk factor for cervical cancer is infection caused by human papilloma virus. HPV is a virus that has more than 150 related viruses and some of them can cause a type of growth called papilloma. This virus can infect cells on the surface of the skin and in the genitals but not the blood or internal organs sech as the heart or lungs. HPV can be passed from one person to another especially during sex or skin-to-skin contact. Certain types of HPV may cause different warts to appear on or around the genital organs. The high-risk types that strongly linked to cancer and most common risk types include HPV 16 and HPV 18, which is become an interest topic in our project.
+										</div>
+                                </div>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Smoking</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/causes/smoke.jpg" alt="preventing" />
+									<br>
+										Woman who smoke can get higher risk to get cervical cancer than woman who don’t smoke. Some substances or chemicals can affect organs other than lungs because they were absorbed through the lungs and carried in the bloodstream through the body. Tobacco have been found in the cervical mucus of women who smoke because the researchers believe that these substances damage the DNA of cervix cells. The immune system from a woman who smoke can be less effective in fighting HPV infections.
+										 </div>
+                                </div>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Immunosuppression</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+                                       Human immunodeficiency virus (HIV) is the virus that cause AIDS, may damages the immune system and puts women at higher risk for HPV infection. For women with an impaired immune system from HIV might develop into an invasive cancer faster than it normally would. Another example of women at risk of cervical cancer are woman that taking drugs to suppress their immune response, especially for those who being treated for an autoimmune disease or those who have had an organ transplant.  
+									</div>
+                                </div>
+								
+								<div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Chlamydia infection</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/causes/dia.jpg" alt="preventing" />
+									<br>
+                                    Chlamydia is a kind of bacteria that can affect the reproductive system and acan cause pelvic inflammation then leading to infertility. Woman who are infected with chlamydia often have no symptoms and has higher risk of cervical cancer.   
+									</div>
+                                </div>
+								
+								<div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Oral contraceptives</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/causes/oralcause.jpg" alt="preventing" />
+									<br>
+                                    The risk of cervical cancer goes up if the longer a woman takes Ocs, but the risk goes back down again after Ocs are stopped.
+									</div>
+                                </div>
+								
+								<div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Full-term pregnancies</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+                                    Woman who have had 3 or more full-term pregnancies have an increased risk of developing cervical cancer. These woman have had unprotected intercourse to get pregnant, so they may have had more exposure to HPV. Also, hormonal changes during pregnancy as possibly making women more susceptible to HPV infection or cancer growth.
+									</div>
+                                </div>
+								
+								<div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Diethylstilbestrol (DES) </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/causes/des.jpg" alt="preventing" />
+									<br>
+                                   DES is a hormonal drug that was consume to some women to prevent miscarriage between 1940 and 1971. These women develop clear cell adenocarcinoma of the vagina or cervix more often than would normally be expected. The average age of women ehen they are diagnosed with DES-related clear-cell adenocarcinoma is 19 years old. DES daughters may also be at increased risk of developing squamous cell cancers and pre-cancers of the cervix linked to HPV.
+								   </div>
+                                </div>
+								
+								<div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Family history of ca cervix </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+                                   If a woman’s mother or sister or any other family had cervical cancer, her chances of developing the disease are 2 to 3 times higher than if no one in the family had it. Inherited condition in a family history can affect  others member, especially women in that family.  
+								   </div>
+                                </div>
+								
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                        <h2 class="ui-collapsible-heading"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                            <span class="ui-btn-text">Prevent From Cervical Cancer</span>
+                        </a></h2>
+                        <div class="ui-body ui-body-d ui-textalign-left ui-corner-none" data-corners="false">
+
+                            <div data-role="collapsible-set" class="ui-corner-none" data-corners="false">
+
+                                <!-- interests & hobbies -->
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">HPV VACCINE </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/prevent/hpvv.jpg" alt="preventing" />
+									<img src="images/prevent/tusuk.jpg" alt="preventing" />
+									<br>
+                                    in USA, this vaccines were licensed in 2006 for use in females aged 9 to 26 years old. The vaccine can be used toreduce the incidence of precancerous cervical lesions caused by HPV type 16 and 18 especially for those who haven’t previously been infected with these strains.
+									</div>
+                                </div>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">DON’T SMOKE </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/prevent/nosmo.jpg" alt="preventing" />
+									<br>
+                                    tobacco by-products have been found in the cervical mucus of women who smoke and smoking makes the immune system less effective in HPV infections.
+									</div>
+                                </div>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">USE CONDOM</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/prevent/cdm.jpg" alt="preventing" />
+									<br>
+                                    condoms can give protection against HPV but they don’t completely prevent infection because they don’t cover completely every posibble HPV-infected area of the body. Just try to be loyal for your partner and it can prevent you from getting HPV infection.
+									</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="ui-body">
+                    <!-- previous page link -->
+<!--                     <a class="previous-btn" data-theme="c" data-corners="false" data-role="button" data-inline="true" data-icon="arrow-l" href="#home">
+                        <img src="images/icons/round/64x64/home.png" alt="rss" style="display: block; margin: 0 auto">
+                        Home
+                    </a> -->
+
+                    <!-- next page link -->
+                    <a class="next-btn" data-theme="c" data-corners="false" data-role="button" data-inline="true" data-icon="arrow-r" data-iconpos="right" href="#screening">
+                        <img src="images/icons/round/64x64/sce.png" alt="rss" style="display: block; margin: 0 auto">
+                        Screening
+                    </a>
+                </div>
+
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+
+        <!-- screening page -->
+        <div data-role="page" id="screening" data-title="screening">
+            <div data-role="header">
+                <h1>Screening</h1>
+                <a data-role="button" href="#home" data-transition="flip" data-icon="home" data-corners="false">Home</a>
+            </div>
+            <div data-role="content">
+
+                <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow ui-corner-none">
+
+                    <!-- Papanicolau (Pap) Test -->
+                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="false" data-iconpos="right" data-theme="c" class="portfolio-item ui-btn ui-btn-icon-right ui-li ui-li-has-alt ui-li-has-thumb ui-first-child ui-btn-up-c ui-corner-none"><div class="ui-btn-inner ui-li ui-li-has-alt">
+                        <div class="ui-btn-text">
+                            <a href="#screening1" class="ui-link-inherit ui-corner-none">
+                                <img src="images/portfolio/pap/pap1.jpg" class="ui-li-thumb ui-corner-none">
+                                <h3 class="ui-li-heading">PAP Test </h3>
+                                <p class="ui-li-desc">Papanicolau test</p>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#screening1" title="Purchase album" class="ui-li-link-alt ui-btn ui-btn-icon-notext ui-btn-up-c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="false" data-iconpos="notext" data-theme="c"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="arrow-r" data-iconpos="notext" data-theme="b" title="" class="ui-btn ui-btn-up-d ui-shadow ui-btn-corner-all ui-btn-icon-notext"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></span></span></a></li>
+
+                    <!-- HPV DNA Test  -->
+                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="false" data-iconpos="right" data-theme="c" class="portfolio-item ui-btn ui-btn-icon-right ui-li ui-li-has-alt ui-li-has-thumb ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li ui-li-has-alt">
+                        <div class="ui-btn-text">
+                            <a href="#screening2" class="ui-link-inherit">
+                                <img src="images/portfolio/hpv1.png" class="ui-li-thumb">
+                                <h3 class="ui-li-heading">HPV DNA </h3>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#screening2" title="Purchase album" class="ui-li-link-alt ui-btn ui-btn-icon-notext ui-btn-up-c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="false" data-iconpos="notext" data-theme="c"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="arrow-r" data-iconpos="notext" data-theme="b" title="" class="ui-btn ui-btn-up-d ui-shadow ui-btn-corner-all ui-btn-icon-notext"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></span></span>
+                    </a></li>
+
+                    <!-- Cervical Biopsies  -->
+                     <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="false" data-iconpos="right" data-theme="c" class="portfolio-item ui-btn ui-btn-icon-right ui-li ui-li-has-alt ui-li-has-thumb ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li ui-li-has-alt">
+                        <div class="ui-btn-text">
+                            <a href="#screening3" class="ui-link-inherit">
+                                <img src="images/cb/icon.jpg" class="ui-li-thumb">
+                                <h5 class="ui-li-heading">Cervical Biopsies </h5>
+								
+                                
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#screening3" title="Purchase album" class="ui-li-link-alt ui-btn ui-btn-icon-notext ui-btn-up-c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="false" data-iconpos="notext" data-theme="c"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="arrow-r" data-iconpos="notext" data-theme="b" title="" class="ui-btn ui-btn-up-d ui-shadow ui-btn-corner-all ui-btn-icon-notext"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></span></span>
+                    </a></li>
+					
+					<!-- Visual Screening   -->
+                     <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="false" data-iconpos="right" data-theme="c" class="portfolio-item ui-btn ui-btn-icon-right ui-li ui-li-has-alt ui-li-has-thumb ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li ui-li-has-alt">
+                        <div class="ui-btn-text">
+                            <a href="#screening4" class="ui-link-inherit">
+                                <img src="images/cb/colco.jpg" class="ui-li-thumb">
+                                <h5 class="ui-li-heading">Visual Screening </h5>
+                                
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#screening4" title="Purchase album" class="ui-li-link-alt ui-btn ui-btn-icon-notext ui-btn-up-c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="false" data-iconpos="notext" data-theme="c"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="arrow-r" data-iconpos="notext" data-theme="b" title="" class="ui-btn ui-btn-up-d ui-shadow ui-btn-corner-all ui-btn-icon-notext"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></span></span>
+                    </a></li>
+                   
+                </ul>
+
+                <div>
+                    <!-- previous page link -->
+                    <a class="previous-btn" data-theme="c" data-corners="false" data-role="button" data-inline="true" data-icon="arrow-l" href="#preventing">
+                        <img src="images/icons/round/64x64/preve.png" alt="rss" style="display: block; margin: 0 auto">
+                        Preventing
+                    </a>
+
+                    <!-- next page link -->
+                    <a class="next-btn" data-theme="c" data-corners="false" data-role="button" data-inline="true" data-icon="arrow-r" data-iconpos="right" href="#therapy">
+                        <img src="images/icons/round/64x64/netvibes.png" alt="rss" style="display: block; margin: 0 auto">
+                        Therapy
+                    </a>
+                </div>
+
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+
+        <!-- pap test -->
+        <div data-role="page" id="screening1" data-title="screening1">
+            <div data-role="header">
+                <h1>Papanicolau Test </h1>
+                <a data-role="button" href="#screening" data-transition="flip" data-icon="arrow-l" data-corners="false">Back</a>
+            </div>
+            <div data-role="content">
+
+                <img src="images/portfolio/pap/pap2.jpg" alt="screening 1" />
+
+                <p>this test has been known in developing countries and more succcessful than any other test screening in preventing cervical cancer and pre-cancerous changes. The concept in this test is to collect or examine the structure or characteristics of the cells from cervic from cervical cytology testing and before do this test, you need to do several things to make the Pap test as accurate as possible, such as not to schedule your test during your menstrual period </p>
+				<p>this is the result of pap test :</p>
+				<img src="images/portfolio/pap/result.jpg" alt="screening 1" />
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+
+        <!-- HPV DNA Test  -->
+        <div data-role="page" id="screening2" data-title="screening2">
+            <div data-role="header">
+                <h1>HPV DNA Test</h1>
+                <a data-role="button" href="#screening" data-transition="flip" data-icon="arrow-l" data-corners="false">Back</a>
+            </div>
+            <div data-role="content">
+
+               <!-- <img src="images/portfolio/pap/hpvv.jpg" alt="screening 3" /> -->
+
+                <p>The most common cause from cervical cancer is Human Papilloma Virus (HPV) infections, especially type 18 and 16 but icould be done from other types of HPV. This test has some common with Pap test in terms of how the sample is collected. Based on the article [2] , this test can be used as a follow up from Pap test that can detect hig-risk types of HPV.</p>
+				
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+
+        <!-- cervical biopsies -->
+        <div data-role="page" id="screening3" data-title="screening3">
+            <div data-role="header">
+                <h1>Cervical Biopsies</h1>
+                <a data-role="button" href="#screening" data-transition="flip" data-icon="arrow-l" data-corners="false">Back</a>
+            </div>
+            <div data-role="content">
+			
+			<div class="ui-body ui-body-d ui-textalign-left ui-corner-none" data-corners="false">
+
+                            <div data-role="collapsible-set" class="ui-corner-none" data-corners="false">
+
+                                
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Colposcopy</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/cb/colco.jpg" alt="screening 3" />
+									<br>
+                                    This exam need to be done with the doctor when the colposcope (an instrument that has magnifying lenses) used to see the surface of the cervix closely and clearly.
+									</div>
+                                </div>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Cone biopsy </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									 <img src="images/cb/cone.jpg" alt="screening 3" />
+									 <br>
+                                    The doctor removes a cone-shaped piece of tissue from the cervix and this biopsy can be used as treatment to remove many pre-cancers and some very early cancers.
+									</div>
+                                </div>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Endocervical scraping </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/cb/es.jpg" alt="screening 3" />
+									<br>
+                                    if the area of HPV infection and pre-cancer can’t be seen with the colposcope, there are another method which is using curette to scrape the inside of the canal to take some tissue and then examine it in lab 
+									</div>
+                                </div>
+								
+								 
+								 <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Punch Biopsy </span>
+                                    </a></h2>
+									
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/cb/punch.jpg" alt="screening 3" />
+									<br>
+                                   The doctor uses a sharp tool to take or pinch a small part for samples of cervical tissue.
+									</div>
+                                </div>
+								
+								 <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">LEEP</span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/cb/leep.jpg" alt="screening 3" />
+									<br>
+                                    Loop Electrosurgical Excision Procedure  : the doctor uses an electric wire loop to slice or cut off a thin and round shape of cervical tissue.
+									</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+		
+        <!-- Visual Screening   -->
+        <div data-role="page" id="screening4" data-title="screening4">
+            <div data-role="header">
+                <h1>Visual Screening</h1>
+                <a data-role="button" href="#screening" data-transition="flip" data-icon="arrow-l" data-corners="false">Back</a>
+            </div>
+            <div data-role="content">
+
+                <p>: this screening test mean to do a visual inspection on the cells after application from solution acetic acid or called VIA. This method involves observation of the uterine cervix after diluted in acetic acid for 1 to 2 minutes. A positive result is characterized by the white colour of a cervical growth or the entire cervix.</p>
+
+				</div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+
+
+        <!-- therapy -->
+        <div data-role="page" id="therapy" data-title="therapy">
+            <div data-role="header">
+                <h1>Therapy</h1>
+                <a data-role="button" href="#home" data-transition="flip" data-icon="home" data-corners="false">Home</a>
+            </div>
+            <div data-role="content">
+			<p>After knowing the diagnostic, you don’t have to gave up about the sickness. As we all know, the most common treatments for cancer is chemotherapy or chemoradiation or radiotherapy. Here, after we reviews some journals, we can give you some information to treat the sickness other than chemoradiation or chemotherapy. Here’s some recommendations from us:</p>
+
+                <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow ui-corner-none">
+					
+					
+					<!-- Theraupetic Vaccines   -->
+                     <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="false" data-iconpos="right" data-theme="c" class="portfolio-item ui-btn ui-btn-icon-right ui-li ui-li-has-alt ui-li-has-thumb ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li ui-li-has-alt">
+                        <div class="ui-btn-text">
+                            <a href="#therapy1" class="ui-link-inherit">
+                                <img src="images/prevent/hpvv.jpg" class="ui-li-thumb">
+                                <h3 class="ui-li-heading">TV</h3>
+								<p class="ui-li-desc">Theraupetic Vaccines  </p>
+                                
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#therapy1" title="Purchase album" class="ui-li-link-alt ui-btn ui-btn-icon-notext ui-btn-up-c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="false" data-iconpos="notext" data-theme="c"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="arrow-r" data-iconpos="notext" data-theme="b" title="" class="ui-btn ui-btn-up-d ui-shadow ui-btn-corner-all ui-btn-icon-notext"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></span></span>
+                    </a></li>
+
+                    <!-- Therapeutical antibodies   -->
+                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="false" data-iconpos="right" data-theme="c" class="portfolio-item ui-btn ui-btn-icon-right ui-li ui-li-has-alt ui-li-has-thumb ui-first-child ui-btn-up-c ui-corner-none"><div class="ui-btn-inner ui-li ui-li-has-alt">
+                        <div class="ui-btn-text">
+                            <a href="#therapy2" class="ui-link-inherit ui-corner-none">
+                                <img src="images/vaksin/tha.png" class="ui-li-thumb">
+                                <h3 class="ui-li-heading">TA  </h3>
+                                <p class="ui-li-desc">Therapeutical antibodies  </p>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#therapy2" title="Purchase album" class="ui-li-link-alt ui-btn ui-btn-icon-notext ui-btn-up-c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="false" data-iconpos="notext" data-theme="c"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="arrow-r" data-iconpos="notext" data-theme="b" title="" class="ui-btn ui-btn-up-d ui-shadow ui-btn-corner-all ui-btn-icon-notext"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></span></span></a></li>
+
+                    <!--	Bevacizumab  -->
+                    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="false" data-iconpos="right" data-theme="c" class="portfolio-item ui-btn ui-btn-icon-right ui-li ui-li-has-alt ui-li-has-thumb ui-first-child ui-btn-up-c"><div class="ui-btn-inner ui-li ui-li-has-alt">
+                        <div class="ui-btn-text">
+                            <a href="#therapy3" class="ui-link-inherit">
+                                <img src="images/vaksin/bv.jpg" class="ui-li-thumb">
+                                <h3 class="ui-li-heading">Bevacizumab</h3>
+                                
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#therapy3" title="Purchase album" class="ui-li-link-alt ui-btn ui-btn-icon-notext ui-btn-up-c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="false" data-iconpos="notext" data-theme="c"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="arrow-r" data-iconpos="notext" data-theme="b" title="" class="ui-btn ui-btn-up-d ui-shadow ui-btn-corner-all ui-btn-icon-notext"><span class="ui-btn-inner"><span class="ui-btn-text"></span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></span></span>
+                    </a></li>
+
+                   
+                </ul>
+
+                <div>
+                    <!-- previous page link -->
+                    <a class="previous-btn" data-theme="c" data-corners="false" data-role="button" data-inline="true" data-icon="arrow-l" href="#screening">
+                        <img src="images/icons/round/64x64/sce.png" alt="rss" style="display: block; margin: 0 auto">
+                        Screening
+                    </a>
+
+                    <!-- next page link -->
+                    <a class="next-btn" data-theme="c" data-corners="false" data-role="button" data-inline="true" data-icon="arrow-r" data-iconpos="right" href="#test">
+                        <img src="images/icons/round/64x64/test.png" alt="rss" style="display: block; margin: 0 auto">
+                        Test
+                    </a>
+                </div>
+
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+
+		
+		 <!-- theraupetic vaccines -->
+        <div data-role="page" id="therapy1" data-title="therapy1">
+            <div data-role="header">
+                <h1>TV </h1>
+                <a data-role="button" href="#therapy" data-transition="flip" data-icon="arrow-l" data-corners="false">Back</a>
+            </div>
+            <div data-role="content">
+			
+			<div class="ui-body ui-body-d ui-textalign-left ui-corner-none" data-corners="false">
+
+                            <div data-role="collapsible-set" class="ui-corner-none" data-corners="false">
+
+                                <!-- therapy1 -->
+								<p>vaccines can be used too for treatment for this cancer and there are many types of this theraupetic vaccines.</p>
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Protein/peptide-based vaccines </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/vaksin/peptide.jpg" alt="therapy 1" />
+									<br>
+                                    This vaccines will contain some protein or peptide where it can enhanced the immune systems of the body and eventhough this vaccines has low immunogenicity, adjuvants (agent delivery systems) immune will help them to enhance vaccine potency. This vaccines are easy to produce, stable, and safe.
+									</div>
+                                </div>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">DNA/RNA-based vaccines </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/vaksin/dna.jpg" alt="therapy 1" />
+									<br>
+                                    This type of vaccines has DNA or RNA on it to deliver to the body with the help of adjuvants or gene gun. This vaccines are relatively safe, stable, cost efficient, and able to sustain reasonable levels of antigen expression within cells. They can be delivered with little risk to individuals who are immunosuppressed.
+									</div>
+                                </div>
+
+                                <div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Live vector-based vaccines </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+                                    This vaccines are highly immunogenic with minimal toxicity and extremely efficient infection rates. Attenuated bacterial vector-based vaccines have been explored in HPV therapeutic vaccines.
+									</div>
+                                </div>
+								
+								<div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Tumor cell-based vaccines </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+                                    The use of this vaccines is an interesting strategy because it is not necessary to clearly identify the tumor antigens, but this vaccines are costly and difficult to produce on large scale.
+									</div>
+                                </div>
+								
+								<div data-role="collapsible" data-corners="false" class="ui-corner-none">
+                                    <h2 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-up-d" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-icon="plus" data-iconpos="left" data-theme="d">
+                                        <span class="ui-btn-text">Dendritic cell-based vaccines </span>
+                                    </a></h2>
+                                    <div class="ui-body ui-textalign-left">
+									<img src="images/vaksin/dendri.jpg" alt="therapy 1" />
+									<br>
+                                    Aim to enhance cell immunity with the help of adjuvant but this vaccines is expensive.
+									</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+		
+		
+		
+        <!-- Therapeutical antibodies   -->
+        <div data-role="page" id="therapy2" data-title="therapy2">
+            <div data-role="header">
+                <h1>TA</h1>
+                <a data-role="button" href="#therapy" data-transition="flip" data-icon="arrow-l" data-corners="false">Back</a>
+            </div>
+            <div data-role="content">
+
+               
+
+                <p>This antibodies can be used to inhibit protein function that caould be the treatment for human disease especially for monoclonal antibodies. The monoclonal antibodies that already in clinical use is anti anti Epidermal Growth Factor Receptor (EGFR).</p>
+				
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+
+        <!-- Bevacizumab  -->
+        <div data-role="page" id="therapy3" data-title="therapy3">
+            <div data-role="header">
+                <h1>Bevacizumab</h1>
+                <a data-role="button" href="#therapy" data-transition="flip" data-icon="arrow-l" data-corners="false">Back</a>
+            </div>
+            <div data-role="content">
+
+               <img src="images/vaksin/beva.jpg" alt="therapy 1" />
+									
+
+                <p>Bevacizumab is a monoclonal antibody that can be used in combination with chemotherapy in the treatment of advanced cervical cancer which has result an improvement of 3.7 months in median overall survival or proling the survival of the patients </p>
+				
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+
+       
+       
+
+        <!-- Contact page -->
+        <div data-role="page" id="test" data-title="test">
+            <div data-role="header">
+                <h1>Test Cancer</h1>
+                <a data-role="button" href="#home" data-icon="home" data-corners="false">Home</a>
+            </div>
+            <div data-role="content">
+       
+	   
+	   <title>Capture Photo</title>
+    
+	
+	
+	<section data-role="content" >
+			<div id="picFrame">
+				<img id="thePicture" />
+			</div>
+		</section>
+		<footer data-role="footer" data-position="fixed">
+			<div class="ui-grid-b">
+				<div class="ui-block-a"></div>
+				<div class="ui-block-b"><button data-theme="e" id="snapPicture">Snap!</button></div>
+				<div class="ui-block-c"></div>
+			</div>
+		</footer>
+	</div>
+	<script src="scripts/app.js" type="text/javascript"></script>
+  <!--<body>
+    <button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
+    <button onclick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
+  </body>-->
+	   
+	   
+	   
+	   
+	   
+		
+		</div>
+		
+		<script src="js/app.js" type="text/javascript"></script>
+		
+		
+		<!-- Help -->
+        <div data-role="page" id="help" data-title="help">
+            <div data-role="header">
+                <h1>Help</h1>
+                <a data-role="button" href="#home" data-transition="flip" data-icon="arrow-l" data-corners="false">Back</a>
+            </div>
+            <div data-role="content">
+
+                <img src="images/logo/c3a.jpg" alt="help"/>
+
+                <p>Cervical Cancer Care+  Version = Beta Version
+				<br>
+				<br>
+				<br>
+
+<br>Everyone can find more about cervical cancer. With educate and testing features, user can educate all about preventing, screening, and therapy cervical cancer. 
+<br>
+<br>
+<br>
+<br>Besides that, every woman can test herself, this is the steps :
+<br>1. Make sure that u have C3+ kit
+<br>2. Follow C3+ kit instruction
+<br>3. Choose test cancer menu, it automatically capture object kit.
+<br>4. Wait a few moment and you will get the result
+<br>
+<br>
+<br>
+<br>Notice : this app still beta version, so the accurate result still less 
+</p>
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014</p>
+            </div>
+        </div>
+		
+		
+		<!-- About Us -->
+        <div data-role="page" id="about" data-title="about">
+            <div data-role="header">
+                <h1>Abot Us</h1>
+                <a data-role="button" href="#home" data-transition="flip" data-icon="arrow-l" data-corners="false">Back</a>
+            </div>
+            <div data-role="content">
+
+                <img src="images/logo/c3a.jpg" alt="about"/>
+
+                <p>Developed by : </p>
+				 <img src="images/logo/logoigemub.png" alt="about"/>
+
+				<p>Supported by : </p>
+				 <img src="images/logo/igemlogo.png" alt="help"/>
+				 <img src="images/logo/logoub.jpg" alt="help"/>
+				 <img src="images/logo/bioss-4.jpg" alt="help"/>
+				 <img src="images/logo/ptiik.png" alt="help"/>
+				  <img src="images/logo/syn.png" alt="help"/>
+
+            </div>
+            <div data-role="footer">
+                <h2>C3+ iGem Brawijaya</h2>
+                <p class="copyright">&copy; Copyright 2014/aaw</p>
+            </div
+        </div>
+		
+		
+    </body>
+</html>
